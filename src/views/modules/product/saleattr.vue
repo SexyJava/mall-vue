@@ -1,15 +1,6 @@
 <template>
   <div>
-    <el-input placeholder="输入关键字进行过滤" v-model="filterText"></el-input>
-    <el-tree
-      :data="menus"
-      :props="defaultProps"
-      node-key="catId"
-      ref="menuTree"
-      @node-click="nodeclick"
-      :filter-node-method="filterNode"
-      :highlight-current = "true"
-    ></el-tree>
+      <base-attr :attrtype="0"></base-attr>
   </div>
 </template>
 
@@ -17,58 +8,25 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // eslint-disable-next-line no-irregular-whitespace
 // 例如：import 《组件名称》 from '《组件路径》';
-
+import BaseAttr from './baseattr'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: {},
+  components: {BaseAttr},
   props: {},
   data () {
     // 这里存放数据
-    return {
-      filterText: '',
-      menus: [],
-      expandedKey: [],
-      defaultProps: {
-        children: 'children',
-        label: 'name'
-      }
-    }
+    return {}
   },
   // eslint-disable-next-line no-irregular-whitespace
   // 计算属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
-  watch: {
-    filterText (val) {
-      this.$refs.menuTree.filter(val)
-    }
-  },
+  watch: {},
   // 方法集合
-  methods: {
-    // 树节点过滤
-    filterNode (value, data) {
-      if (!value) return true
-      return data.name.indexOf(value) !== -1
-    },
-    getMenus () {
-      this.$http({
-        url: this.$http.adornUrl('/product/category/list/tree'),
-        method: 'get'
-      }).then(({ data }) => {
-        this.menus = data.data
-      })
-    },
-    nodeclick (data, node, component) {
-      console.log('子组件category的节点被点击', data, node, component)
-      // 向父组件发送事件；
-      this.$emit('tree-node-click', data, node, component)
-    }
-  },
+  methods: {},
   // eslint-disable-next-line no-irregular-whitespace
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created () {
-    this.getMenus()
-  },
+  created () {},
   // eslint-disable-next-line no-irregular-whitespace
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {},
@@ -88,5 +46,4 @@ export default {
 }
 </script>
 <style scoped>
-
 </style>
