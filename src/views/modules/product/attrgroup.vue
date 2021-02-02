@@ -138,9 +138,9 @@ export default {
         url: this.$http.adornUrl(`/product/attrgroup/list/${this.catId}`),
         method: 'get',
         params: this.$http.adornParams({
-          page: this.pageIndex,
-          limit: this.pageSize,
-          key: this.dataForm.key
+          'page': this.pageIndex,
+          'limit': this.pageSize,
+          'key': this.dataForm.key
         })
       }).then(({ data }) => {
         if (data && data.code === 0) {

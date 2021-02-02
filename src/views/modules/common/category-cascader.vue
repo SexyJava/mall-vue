@@ -53,7 +53,6 @@ export default {
       this.paths = this.catelogPath
     },
     paths (v) {
-      debugger
       this.$emit('update:catelogPath', v)
       // 还可以使用pubsub-js进行传值
       PubSub.publish('catPath', v)
