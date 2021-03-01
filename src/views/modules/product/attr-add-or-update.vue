@@ -54,7 +54,7 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="可检索" prop="searchType" v-if="type == 1">
+      <el-form-item label="可检索" prop="searchType" v-if="type === 1">
         <el-switch
           v-model="dataForm.searchType"
           active-color="#13ce66"
@@ -63,7 +63,7 @@
           :inactive-value="0"
         ></el-switch>
       </el-form-item>
-      <el-form-item label="快速展示" prop="showDesc" v-if="type == 1">
+      <el-form-item label="快速展示" prop="showDesc" v-if="type === 1">
         <el-switch
           v-model="dataForm.showDesc"
           active-color="#13ce66"
